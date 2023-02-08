@@ -18,8 +18,9 @@ jobs:
           - dockerfile: ./a/Dockerfile
             context: ./a
             image: ghcr.io/owenbrooks/challenges-a
-          # - dockerfile: ./a/Dockerfile
-          #   image: ghcr.io/Monash-Connected-Autonomous-Vehicle/challenges-a
+          - dockerfile: ./a/Dockerfile
+            context: ./a
+            image: ghcr.io/owenbrooks/challenges-b
     permissions:
       contents: read
       packages: write
@@ -44,7 +45,7 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: .
+          context: ${{ matrix.context }}
           file: ${{ matrix.dockerfile }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
