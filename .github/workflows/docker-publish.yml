@@ -16,6 +16,7 @@ jobs:
       matrix:
         include:
           - dockerfile: ./a/Dockerfile
+            context: ./a
             image: ghcr.io/owenbrooks/challenges-a
           # - dockerfile: ./a/Dockerfile
           #   image: ghcr.io/Monash-Connected-Autonomous-Vehicle/challenges-a
