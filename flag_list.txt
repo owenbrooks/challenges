@@ -1,0 +1,16 @@
+A: FLAG{this_is_what_a_flag_looks_like}
+B: FLAG{harry_potter_would_be_proud}
+C: FLAG{acronyms_are_cryptic}
+D:
+E:
+F:
+G:
+H:
+I:
+J:
+K:
+L:
+M:
+N:
+O:
+P:

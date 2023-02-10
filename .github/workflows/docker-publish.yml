@@ -1,3 +1,5 @@
+# This workflow was set up following instructions at https://github.com/docker/build-push-action 
+# but modified to push to Github container registry instead of dockerhub
 name: Build & publish docker images
 on:
   push:
@@ -9,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
+      matrix: # lets you create a bunch of images
         include:
           - dockerfile: ./a/Dockerfile
             context: ./a

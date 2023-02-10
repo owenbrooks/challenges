@@ -1,10 +1,9 @@
-# Use an official Python runtime as the base image
+# Use an official ubuntu image as the base image
 FROM ubuntu:22.04
 
 RUN apt-get -y update && apt-get install -y \
     sudo \
     && rm -rf /var/lib/apt/lists/*
-
 # Create a non-root user with sudo privileges
 ARG USERNAME=mcav
 ARG USER_UID=1000
@@ -21,7 +20,7 @@ USER $USERNAME
 WORKDIR /home/mcav
 
 # Copy the "main.py" file to the container
-RUN echo "echo FLAG{this_is_what_a_flag_looks_like}" >> ~/.bashrc
+COPY main.py .
 
 # Start a bash command prompt
 CMD ["bash"]

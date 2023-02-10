@@ -1,10 +1,9 @@
-# Use an official Python runtime as the base image
+# Use an official ubuntu image as the base image
 FROM ubuntu:22.04
 
 RUN apt-get -y update && apt-get install -y \
     sudo \
     && rm -rf /var/lib/apt/lists/*
-
 # Create a non-root user with sudo privileges
 ARG USERNAME=mcav
 ARG USER_UID=1000
@@ -18,10 +17,31 @@ RUN echo "export PS1='\[\e]0;\u@docker: \w\a\]${debian_chroot:+($debian_chroot)}
 USER $USERNAME
 
 # Set the working directory in the container
-WORKDIR /home/mcav
+WORKDIR /home/mcav/m/c/m
+RUN touch nope
 
-# Copy the "main.py" file to the container
-RUN echo "echo FLAG{this_is_what_a_flag_looks_like}" >> ~/.bashrc
+WORKDIR /home/mcav/m/c/v
+RUN touch sorry
+
+WORKDIR /home/mcav/m/a/c
+RUN touch not_here
+
+WORKDIR /home/mcav/m/v/c/a
+RUN touch not_here_either
+
+WORKDIR /home/mcav/m/c/a/m
+RUN touch nearly
+
+WORKDIR /home/mcav/m/c/a/a
+RUN touch so_close
+
+WORKDIR /home/mcav/m/c/a/c
+RUN touch not_here_either
+
+WORKDIR /home/mcav/m/c/a/v
+RUN touch FLAG{acronyms_are_cryptic}
+
+WORKDIR /home/mcav
 
 # Start a bash command prompt
 CMD ["bash"]
