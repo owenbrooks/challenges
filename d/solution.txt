@@ -1,0 +1,3 @@
+ros2 run mcav_challenges talker
+ros2 topic list OR ros2 node info talker
+ros2 topic echo /i_wonder_what_this_topic_is

@@ -15,9 +15,15 @@ RUN groupadd --gid $USER_GID $USERNAME \
 # Change prompt to show we are in a docker container
 RUN echo "export PS1='\[\e]0;\u@docker: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@docker\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '" >> /home/${USERNAME}/.bashrc
 USER $USERNAME
+# Add source commands to bashrc
+RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /home/${USERNAME}/.bashrc
+RUN echo "source /home/${USERNAME}/mcav_ws/install/setup.bash" >> /home/${USERNAME}/.bashrc
+
+COPY --chown=$USERNAME:$USERNAME ./mcav_challenges /home/mcav/mcav_ws/src
 
 # Set the working directory in the container
-WORKDIR /home/mcav
+WORKDIR /home/mcav/mcav_ws
+RUN . /opt/ros/$ROS_DISTRO/setup.sh && colcon build
 
 # Start a bash command prompt
 CMD ["bash"]

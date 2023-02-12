@@ -9,7 +9,7 @@ b:
 c:
 	docker build c/ -f c/Dockerfile -t ghcr.io/owenbrooks/challenges-c
 d:
-	docker build c/ -f d/Dockerfile -t ghcr.io/owenbrooks/challenges-d
+	docker build d/ -f d/Dockerfile -t ghcr.io/owenbrooks/challenges-d
 
 run-a:
 	docker run -it ghcr.io/owenbrooks/challenges-a
@@ -18,4 +18,10 @@ run-b:
 run-c:
 	docker run -it ghcr.io/owenbrooks/challenges-c
 run-d:
-	docker run -it ghcr.io/owenbrooks/challenges-d
+	docker run -v ~/mcav/challenges/mcav_challenges:/home/mcav/mcav_ws/src/mcav_challenges -it ghcr.io/owenbrooks/challenges-d
+
+pull:
+	docker pull ghcr.io/owenbrooks/challenges-a
+	docker pull ghcr.io/owenbrooks/challenges-b
+	docker pull ghcr.io/owenbrooks/challenges-c
+	docker pull ghcr.io/owenbrooks/challenges-d
