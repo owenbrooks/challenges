@@ -16,9 +16,15 @@ jobs:
           - dockerfile: ./a/Dockerfile
             context: ./a
             image: ghcr.io/owenbrooks/challenges-a
-          - dockerfile: ./a/Dockerfile
-            context: ./a
+          - dockerfile: ./b/Dockerfile
+            context: ./b
             image: ghcr.io/owenbrooks/challenges-b
+          - dockerfile: ./c/Dockerfile
+            context: ./c
+            image: ghcr.io/owenbrooks/challenges-c
+          - dockerfile: ./d/Dockerfile
+            context: ./d
+            image: ghcr.io/owenbrooks/challenges-d
     permissions:
       contents: read
       packages: write
